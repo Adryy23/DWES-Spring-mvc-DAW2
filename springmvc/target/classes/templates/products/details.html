@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title th:text="${appName}">Detalle de producto</title>
+	<style>
+		body { font-family: Arial, sans-serif; margin: 2rem; }
+		dl { display: grid; grid-template-columns: 120px 1fr; row-gap: 0.5rem; }
+		dt { font-weight: bold; }
+		.btn { padding: 0.3rem 0.8rem; text-decoration: none; border: 1px solid #888;
+		       border-radius: 4px; background: #eee; }
+	</style>
+</head>
+<body>
+	<h1>Detalle del producto</h1>
+
+	<dl>
+		<dt>ID</dt>        <dd th:text="${product.id}">1</dd>
+		<dt>Nombre</dt>    <dd th:text="${product.name}">Nombre</dd>
+		<dt>Precio</dt>    <dd th:text="${#numbers.formatDecimal(product.price, 1, 2)} + ' €'">10.00</dd>
+		<dt>Descripción</dt> <dd th:text="${product.description}">Descripción</dd>
+	</dl>
+
+	<a class="btn" th:href="@{/products/list}">Volver a la lista</a>
+	<a class="btn" th:href="@{/products/edit/{id}(id=${product.id})}">Editar</a>
+</body>
+</html>
