@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title th:text="${appName}">Formulario de producto</title>
+	<style>
+		body { font-family: Arial, sans-serif; margin: 2rem; }
+		label { display: block; margin-top: 1rem; font-weight: bold; }
+		input { padding: 0.3rem; width: 300px; }
+		.error { color: red; }
+		.btn { margin-top: 1rem; padding: 0.4rem 1rem; }
+	</style>
+</head>
+<body>
+	<h1 th:text="${product.id != null} ? 'Editar producto' : 'Nuevo producto'">Nuevo producto</h1>
+
+	<!-- Si hay errores de validación los mostramos todos aquí -->
+	<div th:if="${errors}" style="color: red; border: 1px solid red; padding: 0.5rem; margin-bottom: 1rem;">
+		<p th:each="e : ${errors}" th:text="${e}">error</p>
+	</div>
+
+	<!-- th:object vincula el formulario con el modelo Product -->
+	<form th:action="@{/products/save}" th:object="${product}" method="post">
+		<!-- El id (oculto) determina si es alta o edición -->
+		<input type="hidden" th:field="*{id}">
+
+		<label for="name">Nombre:</label>
+		<input type="text" th:field="*{name}" id="name">
+
+		<label for="price">Precio (€):</label>
+		<input type="text" th:field="*{price}" id="price">
+
+		<label for="description">Descripción:</label>
+		<input type="text" th:field="*{description}" id="description">
+
+		<br>
+		<button class="btn" type="submit">Guardar</button>
+		<a class="btn" th:href="@{/products/list}">Cancelar</a>
+	</form>
+</body>
+</html>
