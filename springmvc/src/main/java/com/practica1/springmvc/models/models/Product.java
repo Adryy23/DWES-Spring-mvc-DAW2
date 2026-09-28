@@ -1,0 +1,60 @@
+package com.practica1.springmvc.models;
+
+// Modelo Product: representa un producto de la aplicación
+public class Product {
+
+    // Atributos de la clase product
+    private Long id;
+    private String name;
+    private Double price;
+    private String description;
+
+    public Product() {
+    }
+
+    // Constructor que recibe un nombre, un precio y una descripción.
+    public Product(String name, Double price, String description) {
+        this.name = name;
+        this.price = price;
+        this.description = description;
+    }
+
+    // Métodos get y set de los atributos
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    // Método toString para mostrar la información ordenada
+    @Override
+    public String toString() {
+        return "Product [id=" + id + ", nombre=" + name + ", precio=" + price + ", descripcion=" + description + "]";
+    }
+}
